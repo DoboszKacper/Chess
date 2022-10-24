@@ -3,6 +3,7 @@ package com.dobosz.chess.mvc.controller;
 import com.dobosz.chess.entieties.Board;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class BoardController {
@@ -15,7 +16,12 @@ public class BoardController {
     }
 
     @GetMapping("/loadBoard")
-    public String showSignUpForm() {
+    public String loadBoard() {
+        return "index";
+    }
+
+    @PostMapping("/loadBoard")
+    public String moveFigureToPoint(String s) {
         return "index";
     }
 

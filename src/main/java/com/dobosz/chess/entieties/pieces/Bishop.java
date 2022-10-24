@@ -14,15 +14,10 @@ import java.util.List;
 
 import static com.dobosz.chess.utils.ChessUtils.checkIfPositionIsAllowed;
 
-public class Bishop implements Figure {
-
-    private final FigureColor color;
-    private Position position;
-    private final List<FigureMove> moves = new ArrayList<>();
+public class Bishop extends Piece implements Figure {
 
     public Bishop(FigureColor color, int x, int y) {
-        this.color = color;
-        this.position = new Position(x, y);
+        super(color, x, y);
     }
 
     @Override
@@ -42,51 +37,14 @@ public class Bishop implements Figure {
 
         List<BoardRow> boardRows = board.getBoardRows();
         for (int i = 0; i <= board.getBoardRows().size(); i++) {
-            processMovements(position, i, Orientation.TOP_RIGHT, boardRows);
-            processMovements(position, i, Orientation.DOWN_LEFT, boardRows);
-            processMovements(position, i, Orientation.TOP_LEFT, boardRows);
-            processMovements(position, i, Orientation.DOWN_RIGHT, boardRows);
+            processMovements(position, i, i, Orientation.TOP_RIGHT, boardRows);
+            processMovements(position, i, i, Orientation.DOWN_LEFT, boardRows);
+            processMovements(position, i, i, Orientation.TOP_LEFT, boardRows);
+            processMovements(position, i, i, Orientation.DOWN_RIGHT, boardRows);
         }
         //TODO: I dont think we need this when UI
         moves.sort(Comparator.comparing(move -> move.getPosition().getPositionX()));
         return moves;
-    }
-
-    private void processMovements(Position position, int i, Orientation orientation, List<BoardRow> boardRows) {
-        int x1 = position.getPositionX() + i * orientation.getDirection_x();
-        int y1 = position.getPositionY() + i * orientation.getDirection_y();
-        if (checkIfPositionIsAllowed(x1) && checkIfPositionIsAllowed(y1)) {
-            addAttackOrMove(x1, y1, boardRows);
-        }
-    }
-
-    private void addAttackOrMove(int x, int y, List<BoardRow> rows) {
-        if (checkIfEmpty(rows.get(y).getFigures().get(x))) {
-            FigureMove move = new FigureMove(MoveType.MOVE, x, y, position);
-            if (haveNotAttackThisDirections(move)) moves.add(move);
-        }
-
-        if (checkIfCanAttack(rows.get(y).getFigures().get(x))) {
-            FigureMove move = new FigureMove(MoveType.ATTACK, x, y, position);
-            if (haveNotAttackThisDirections(move)) moves.add(move);
-        }
-    }
-
-    boolean checkIfCanAttack(Figure figure) {
-        return !checkIfEmpty(figure) &&
-                !checkIfSameColor(figure);
-    }
-
-    boolean haveNotAttackThisDirections(FigureMove newMove) {
-        return moves.stream().noneMatch(move -> move.getType().equals(MoveType.ATTACK) && move.getOrientation().equals(newMove.getOrientation()));
-    }
-
-    boolean checkIfEmpty(Figure figure) {
-        return figure instanceof EmptySpace;
-    }
-
-    boolean checkIfSameColor(Figure figure) {
-        return figure.getColor().equals(this.getColor());
     }
 
     @Override

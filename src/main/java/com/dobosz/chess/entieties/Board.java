@@ -30,8 +30,8 @@ public class Board {
 
     public void init() {
         boardRows.set(0, new BoardRow(ChessUtils.initStartHighFigures(BLACK)));
-//        boardRows.set(1, new BoardRow(ChessUtils.initStartLowFigures(BLACK)));
-//        boardRows.set(6, new BoardRow(ChessUtils.initStartLowFigures(WHITE)));
+        boardRows.set(1, new BoardRow(ChessUtils.initStartLowFigures(BLACK)));
+        boardRows.set(6, new BoardRow(ChessUtils.initStartLowFigures(WHITE)));
         boardRows.set(7, new BoardRow(ChessUtils.initStartHighFigures(WHITE)));
     }
 

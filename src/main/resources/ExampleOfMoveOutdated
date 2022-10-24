@@ -1,0 +1,42 @@
+//        List<Figure> figuresVertically = board.getBoardRows().get(position.getPositionY()).getFigures();
+//        processMovements(figuresVertically, position.getPositionY(), position.getPositionX());
+//
+//        List<Figure> figuresHorizontally = board.getBoardRows().stream().map(row -> row.getFigures().get(position.getPositionX())).collect(Collectors.toList());
+//        processMovements(figuresHorizontally, position.getPositionX(), position.getPositionY());
+//    private void processMovements(List<Figure> figures, int constant, int modifiable) {
+//        boolean firstLock = false;
+//        boolean secondLock = false;
+//        for (int i = 1, figuresSize = figures.size(); i <= figuresSize; i++) {
+//            int x = modifiable - i;
+//            int y = modifiable + i;
+//
+//            if (checkIfPositionIsAllowed(x)) {
+//                if (checkIfSameColor(figures.get(x))) firstLock = true;
+//
+//                if (!firstLock) addAttackOrMove(constant, x, figures);
+//            }
+//            if (checkIfPositionIsAllowed(y)) {
+//                if (checkIfSameColor(figures.get(y))) secondLock = true;
+//
+//                if (!secondLock) addAttackOrMove(constant, y, figures);
+//            }
+//        }
+//    }
+//
+//    private void addAttackOrMove(int constant, int modifiable, List<Figure> figures) {
+//        if (checkIfEmpty(figures.get(modifiable))) {
+//            FigureMove move = new FigureMove(MoveType.MOVE, constant, modifiable, position);
+//            if (haveNotAttackThisDirections(move)) moves.add(move);
+//        }
+//
+//        if (checkIfCanAttack(figures, modifiable)) {
+//            FigureMove move = new FigureMove(MoveType.ATTACK, constant, modifiable, position);
+//            if (haveNotAttackThisDirections(move)) moves.add(move);
+//        }
+//    }
+
+
+//    boolean checkIfCanAttack(List<Figure> figures, int targetIndex) {
+//        return !checkIfEmpty(figures.get(targetIndex)) &&
+//                !checkIfSameColor(figures.get(targetIndex));
+//    }
