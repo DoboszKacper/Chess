@@ -11,14 +11,14 @@ import java.util.*;
 
 import static com.dobosz.chess.utils.ChessUtils.checkIfPositionIsAllowed;
 
-abstract class Piece {
+abstract class PieceEngine {
 
     protected final FigureColor color;
     protected Position position;
     protected final List<FigureMove> moves = new LinkedList<>();
     protected final Set<Orientation> blockedOrientations = new HashSet<>();
 
-    protected Piece(FigureColor color, int x, int y) {
+    protected PieceEngine(FigureColor color, int x, int y) {
         this.color = color;
         this.position = new Position(x, y);
     }

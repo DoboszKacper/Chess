@@ -4,17 +4,13 @@ import com.dobosz.chess.entieties.Board;
 import com.dobosz.chess.entieties.BoardRow;
 import com.dobosz.chess.entieties.FigureColor;
 import com.dobosz.chess.logic.FigureMove;
-import com.dobosz.chess.logic.MoveType;
 import com.dobosz.chess.logic.Orientation;
 import com.dobosz.chess.logic.Position;
 
 import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.List;
 
-import static com.dobosz.chess.utils.ChessUtils.checkIfPositionIsAllowed;
-
-public class Rook extends Piece implements Figure {
+public class Rook extends PieceEngine implements Figure {
 
     public Rook(FigureColor color, int x, int y) {
         super(color, x, y);

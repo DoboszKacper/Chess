@@ -9,6 +9,10 @@ import java.util.List;
 
 public interface Figure {
 
+    default String getName() {
+        return this.getClass().getSimpleName();
+    }
+
     FigureColor getColor();
 
     Position getPosition();

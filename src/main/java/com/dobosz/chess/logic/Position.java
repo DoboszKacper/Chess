@@ -1,5 +1,7 @@
 package com.dobosz.chess.logic;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Arrays;
 
 import static com.dobosz.chess.utils.ChessUtils.checkIfPositionIsAllowed;
@@ -14,6 +16,7 @@ public class Position {
         }
     }
 
+    @JsonIgnore
     public int[] getPosition() {
         return position;
     }

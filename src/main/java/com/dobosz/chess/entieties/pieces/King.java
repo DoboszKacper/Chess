@@ -9,7 +9,7 @@ import com.dobosz.chess.logic.Position;
 
 import java.util.List;
 
-public class King extends Piece implements Figure {
+public class King extends PieceEngine implements Figure {
 
     public King(FigureColor color, int x, int y) {
         super(color, x, y);
