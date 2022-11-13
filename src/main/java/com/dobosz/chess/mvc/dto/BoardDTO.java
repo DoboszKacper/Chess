@@ -1,7 +1,5 @@
 package com.dobosz.chess.mvc.dto;
 
-import com.dobosz.chess.entieties.Board;
-import com.dobosz.chess.entieties.BoardRow;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

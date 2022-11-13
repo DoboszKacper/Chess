@@ -2,6 +2,7 @@ package com.dobosz.chess.mvc.controller;
 
 import com.dobosz.chess.entieties.Board;
 import com.dobosz.chess.mvc.dto.BoardDTO;
+import com.dobosz.chess.mvc.dto.BoardRowDTO;
 import com.dobosz.chess.mvc.service.BoardService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,9 @@ public class BoardController {
     }
 
     @GetMapping("/loadBoard")
-    public BoardDTO loadBoard() {
+    public BoardRowDTO loadBoard() {
         Board board = service.loadBoard();
-        return convertToDto(board);
+        return convertToDto(board).getBoardRows().get(0);
     }
 
 //    @PostMapping("/loadBoard/move")

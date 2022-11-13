@@ -13,7 +13,6 @@ import java.util.List;
 public class Pawn extends PieceEngine implements Figure {
 
     private boolean isInFirstTurnState;
-    private List<FigureMove> moves = new LinkedList<>();
 
     public Pawn(FigureColor color, int x, int y) {
         super(color, x, y);
@@ -72,8 +71,7 @@ public class Pawn extends PieceEngine implements Figure {
     public List<FigureMove> getAllMovements(Board board) {
         Position position = getPosition();
         moves.clear();
-        int colorBased = color.equals(FigureColor.WHITE) ? -1 : 1;
-        //TODO implement king vs king and 'roszade'
+        int colorBased = color.equals(FigureColor.BLACK) ? -1 : 1;
         List<BoardRow> boardRows = board.getBoardRows();
         if (isInFirstTurnState) {
             processMovements(position, colorBased * 2, colorBased * 2, Orientation.TOP, boardRows);
@@ -82,6 +80,8 @@ public class Pawn extends PieceEngine implements Figure {
         }
         processMovements(position, colorBased, colorBased, Orientation.TOP, boardRows);
         processMovements(position, colorBased, colorBased, Orientation.DOWN, boardRows);
+
+        //ATTACKS
         processMovements(position, colorBased, colorBased, Orientation.TOP_RIGHT, boardRows);
         processMovements(position, colorBased, colorBased, Orientation.DOWN_LEFT, boardRows);
         processMovements(position, colorBased, colorBased, Orientation.TOP_LEFT, boardRows);
